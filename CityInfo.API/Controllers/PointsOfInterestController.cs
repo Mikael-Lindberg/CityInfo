@@ -109,7 +109,7 @@ namespace CityInfo.API.Controllers
             return NoContent();
         }
 
-        [HttpPatch("{pointofinterestid")]
+        [HttpPatch("{pointofinterestid}")]
         public ActionResult PartiallyUpdatePointOfInterest(
             int cityId, int pointOfInterestId,
             JsonPatchDocument<PointOfInterestForUpdateDto> patchDocument)
@@ -151,7 +151,7 @@ namespace CityInfo.API.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{pointOfInterestId")]
+        [HttpDelete("{pointOfInterestId}")]
         public ActionResult DeletePointOfInterest(int cityId, int pointOfInterestId)
         {
             var city = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);
