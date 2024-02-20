@@ -19,7 +19,7 @@ namespace CityInfo.API.Controllers
         [HttpGet("{fileId}")]
         public ActionResult GetFile(string fileId)
         {
-            var pathToFile = "FAQ.pdf";
+            var pathToFile = "document.pdf";
 
             if (!System.IO.File.Exists(pathToFile))
             {
