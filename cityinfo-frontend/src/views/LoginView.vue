@@ -1,8 +1,8 @@
 <script setup lang="ts">
 // @ts-ignore
-import LoginForm from './components/LoginForm.vue'
+import LoginForm from '../components/LoginForm.vue'
 </script>
 
 <template>
-  <router-view />
+  <LoginForm />
 </template>
