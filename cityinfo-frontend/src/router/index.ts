@@ -7,17 +7,27 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: HomeView,
+      meta: { isPublic: true }
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
+      path: '/cities',
+      name: 'cities',
       component: () => import('../views/AboutView.vue')
     }
   ]
+})
+
+router.beforeEach((to, from, next) => {
+  const isAuthenticated = () => {
+    return !!localStorage.getItem('authToken')
+  }
+
+  if (to.name !== 'home' && !isAuthenticated()) {
+    next({ name: 'home' })
+  } else {
+    next()
+  }
 })
 
 export default router
