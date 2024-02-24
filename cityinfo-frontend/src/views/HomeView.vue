@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import OverviewOfFrontpage from '@/components/OverviewOfFrontpage.vue'
 </script>
 
 <template>
-  <TheWelcome />
+  <OverviewOfFrontpage />
 </template>

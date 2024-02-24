@@ -1,8 +1,18 @@
-<script setup lang="ts">
-// @ts-ignore
-import LoginForm from './components/LoginForm.vue'
-</script>
-
 <template>
-  <router-view />
+  <div id="app">
+    <!-- Only display NavigationBar if the current route is not /login -->
+    <NavigationBar v-if="!isLoginRoute" />
+    <router-view />
+  </div>
 </template>
+
+<script setup lang="ts">
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+// @ts-ignore
+import NavigationBar from './components/NavigationBar.vue'
+
+const route = useRoute()
+
+const isLoginRoute = computed(() => route.path === '/login')
+</script>

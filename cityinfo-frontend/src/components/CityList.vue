@@ -1,5 +1,5 @@
 <template>
-  <div class="border rounded-xl py-6 px-4">
+  <div class="border rounded-xl py-6 px-4 mt-4 mx-4">
     <h2 class="text-3xl text-white text-center">Cities</h2>
     <ul class="text-white">
       <li v-for="city in cities" :key="city.id">
@@ -23,9 +23,19 @@ const cities = ref<City[]>([])
 
 onMounted(async () => {
   try {
-    const response = await fetch('https://localhost:7034/api/cities')
+    const token = localStorage.getItem('authToken')
+    if (!token) {
+      throw new Error('Authentication token not found')
+    }
+
+    const response = await fetch('https://localhost:7034/api/v1/cities', {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+
     if (!response.ok) {
-      throw new Error('Failed to fetch cities at :7034')
+      throw new Error('Failed to fetch cities')
     }
 
     cities.value = (await response.json()) as City[]

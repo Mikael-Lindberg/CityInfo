@@ -17,7 +17,7 @@ const router = createRouter({
     {
       path: '/cities',
       name: 'cities',
-      component: () => import('../views/AboutView.vue')
+      component: () => import('../views/CityView.vue')
     }
   ]
 })
@@ -27,10 +27,12 @@ router.beforeEach((to, from, next) => {
     return !!localStorage.getItem('authToken')
   }
 
-  if (to.name !== 'login' && !isAuthenticated()) {
-    next({ name: 'login' })
-  } else {
+  if (to.name === 'login' && isAuthenticated()) {
+    next({ name: 'logout' })
+  } else if (to.meta.isPublic || isAuthenticated()) {
     next()
+  } else {
+    next({ name: 'login' })
   }
 })
 
