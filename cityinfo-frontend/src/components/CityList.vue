@@ -1,7 +1,7 @@
 <template>
   <div class="border rounded-xl py-6 px-4 mt-4 mx-4">
-    <h2 class="text-3xl text-white text-center">Cities</h2>
-    <ul class="text-white">
+    <h2 class="text-3xl text-gray-900 text-center">Cities</h2>
+    <ul class="text-gray-800">
       <li v-for="city in cities" :key="city.id">
         <h3>{{ city.name }}</h3>
         <p>{{ city.description }}</p>
