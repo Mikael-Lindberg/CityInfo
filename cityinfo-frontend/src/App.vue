@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <!-- Only display NavigationBar if the current route is not /login -->
     <NavigationBar v-if="!isLoginRoute" />
     <router-view />
   </div>
